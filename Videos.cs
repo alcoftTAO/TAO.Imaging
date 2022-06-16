@@ -9,7 +9,7 @@ namespace TAO.Imaging
 {
     public static class Videos
     {
-        public static void DrawVideoOnConsole(DirectoryInfo info, int FPS, DrawType type)
+        public static void DrawVideoOnConsole(DirectoryInfo info, int FPS, DrawType type, Action<string> onEveryFrame = null)
         {
             FileInfo[] files = info.GetFiles();
             string[] frames = new string[files.Length];
@@ -32,6 +32,18 @@ namespace TAO.Imaging
 
                 Console.SetCursorPosition(0, 0);
                 Console.Write(frames[i]);
+
+                if (onEveryFrame != null)
+                {
+                    try
+                    {
+                        onEveryFrame.Invoke(frames[i]);
+                    }
+                    catch
+                    {
+
+                    }
+                }
 
                 Thread.Sleep(1000 / FPS);
             }
