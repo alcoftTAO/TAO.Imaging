@@ -1,3 +1,1 @@
-With this basic library you can convert easily images to a byte array or to a bool array (bits). It's open-source and it is for C#.
-
-NOTE: This library is untested, it can have bugs. We will test this library the soon as we can.
+This library can convert a Bitmap to ASCII or draw in the console a video (without sound).
